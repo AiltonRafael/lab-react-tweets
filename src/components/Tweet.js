@@ -1,39 +1,25 @@
-import { faComment, faRetweet, faHeart, faShare } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Actions from "./Actions";
+import ProfileImage from "./ProfileImage";
+import User from "./User";
+import Timestamp from "./Timestamp";
+import Message from "./Message";
 
 function Tweet(props) {
   return (
     <div className="tweet">
-      <img
+      <ProfileImage 
         src={ props.tweet.user.image }
         className="profile"
         alt="profile"
       />
-
       <div className="body">
         <div className="top">
-          <span className="user">
-            <span className="name"> { props.tweet.user.name } </span>
-            <span className="handle"> { props.tweet.user.handle } </span>
-          </span>
-
-          <span className="timestamp"> { props.tweet.timestamp } </span>
+          <User name={props.tweet.user.name} handle={props.tweet.user.handle}/>
+          <Timestamp timestamp={props.tweet.timestamp}/>
         </div>
-
-        <p className="message">
-          { props.tweet.message }
-        </p>
-
-        <div className="actions">
-          {/* Font Awesome icons */}
-          <FontAwesomeIcon icon={faComment}/>
-          <FontAwesomeIcon icon={faRetweet} />
-          <FontAwesomeIcon icon={faHeart} /> 
-          <FontAwesomeIcon icon={faShare} /> 
-        </div>
+       <Message message={props.tweet.message}/>
+        <Actions />
       </div>
-
-      <i class="fas fa-ellipsis-h"></i>
     </div>
   );
 }
