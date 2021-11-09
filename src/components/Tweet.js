@@ -1,8 +1,11 @@
-function Tweet() {
+import { faComment, faRetweet, faHeart, faShare } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+function Tweet(props) {
   return (
     <div className="tweet">
       <img
-        src="https://i.imgur.com/9yw1Fyw.jpg"
+        src={ props.tweet.user.image }
         className="profile"
         alt="profile"
       />
@@ -10,24 +13,23 @@ function Tweet() {
       <div className="body">
         <div className="top">
           <span className="user">
-            <span className="name">Ironhack</span>
-            <span className="handle">@ironhack</span>
+            <span className="name"> { props.tweet.user.name } </span>
+            <span className="handle"> { props.tweet.user.handle } </span>
           </span>
 
-          <span className="timestamp">Nov 30, 2020</span>
+          <span className="timestamp"> { props.tweet.timestamp } </span>
         </div>
 
         <p className="message">
-          On December 7th, we will be hosting a #webinar that will introduce you
-          to #SQL! Are you ready? 🚀
+          { props.tweet.message }
         </p>
 
         <div className="actions">
           {/* Font Awesome icons */}
-          <i class="far fa-comment"></i>
-          <i class="fas fa-retweet"></i>
-          <i class="far fa-heart"></i>
-          <i class="fas fa-share"></i>
+          <FontAwesomeIcon icon={faComment}/>
+          <FontAwesomeIcon icon={faRetweet} />
+          <FontAwesomeIcon icon={faHeart} /> 
+          <FontAwesomeIcon icon={faShare} /> 
         </div>
       </div>
 
